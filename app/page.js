@@ -1,3 +1,5 @@
+'use client';
+
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar, Pie } from 'react-chartjs-2';
 
@@ -5,7 +7,8 @@ const PLACEHOLDER_DATA = {
   totalStudents: 6,
   classAverage: 82.3,
   avgAttendance: 91.5,
-  atRiskStudents: 1
+  atRiskStudents: 1,
+  avgScore: [85, 78, 92, 88]
 };
 
 export default function Home() {
@@ -66,7 +69,7 @@ export default function Home() {
                     labels: ['Math', 'Science', 'History', 'English'],
                     datasets: [{
                       label: 'Average Score',
-                      data: [85, 78, 92, 88],
+                      data: PLACEHOLDER_DATA.avgScore,
                       backgroundColor: 'rgba(59, 130, 246, 0.7)',
                     }]
                   }} />

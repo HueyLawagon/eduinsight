@@ -2,14 +2,6 @@
 export default function Home() {
   return (
     <div className="min-h-screen bg-white p-8">
-      {/* Dashboard Header */}
-      <div className="flex justify-between w-full mb-6">
-        <h1 className="text-3xl font-bold">EduInsight</h1>
-        <div className="flex gap-4">
-          <h2 className="text-xl font-semibold">Dashboard</h2>
-          <h2 className="text-xl font-semibold">Reports</h2>
-        </div>
-      </div>
       
       {/* Performance Dashboard Section */}
       <div className="mb-8">

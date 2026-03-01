@@ -1,7 +1,10 @@
+import { Chart as ChartJS } from 'chart.js/auto';
+import { Bar, Pie } from 'react-chartjs-2';
+
 const PLACEHOLDER_DATA = {
   totalStudents: 6,
   classAverage: 82.3,
-  avgAttendance: 82.3,
+  avgAttendance: 91.5,
   atRiskStudents: 1
 };
 
@@ -19,16 +22,37 @@ export default function Home() {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2">Total Students</div>
+                <div className="mb-2 font-bold">Total Students</div>
                 <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.totalStudents}</div>
               </div>
             </div>
+
+            {/* Class average */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2 font-bold">Class Average</div>
+                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.classAverage}%</div>
+              </div>
+            </div>
+
+            {/* Average attendance */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2 font-bold">Average Attendance</div>
+                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.avgAttendance}%</div>
+              </div>
+            </div>
+            
+            {/* At-risk students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2 font-bold">At-Risk Students</div>
+                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.atRiskStudents}</div>
+              </div>
+            </div>
            </div>
         
         {/* Subject Performance and Student Risk (side-by-side on md+, stacked on small screens) */}
@@ -37,7 +61,16 @@ export default function Home() {
           <div className="w-full max-w-full">
             <h4 className="font-medium mb-3 text-center md:text-left">Subject Performance</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full"
-                 style={{minHeight: '14rem'}}></div>
+                 style={{minHeight: '14rem'}}>
+                  <Bar data={{
+                    labels: ['Math', 'Science', 'History', 'English'],
+                    datasets: [{
+                      label: 'Average Score',
+                      data: [85, 78, 92, 88],
+                      backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                    }]
+                  }} />
+                 </div>
           </div>
           
           {/* Student Risk Distribution Column */}

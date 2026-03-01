@@ -1,4 +1,10 @@
-// app/page.js
+const PLACEHOLDER_DATA = {
+  totalStudents: 6,
+  classAverage: 82.3,
+  avgAttendance: 82.3,
+  atRiskStudents: 1
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white p-8">
@@ -8,15 +14,21 @@ export default function Home() {
         <h3 className="text-xl font-semibold mb-4">Performance Dashboard</h3>
         
            {/* Stats Cards Row (responsive: min-size preserved, cards can grow/shrink) */}
+           {/* Total students */}
            <div className="flex gap-4 mb-8 flex-wrap justify-center">
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2">Total Students</div>
+                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.totalStudents}</div>
+              </div>
+            </div>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
-            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+            style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}></div>
            </div>
         
         {/* Subject Performance and Student Risk (side-by-side on md+, stacked on small screens) */}

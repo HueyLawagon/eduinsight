@@ -8,7 +8,8 @@ const PLACEHOLDER_DATA = {
   classAverage: 82.3,
   avgAttendance: 91.5,
   atRiskStudents: 1,
-  avgScore: [85, 78, 92, 88]
+  avgScore: [85, 78, 92, 88],
+  riskDistribution: [4, 1, 1]
 };
 
 export default function Home() {
@@ -59,28 +60,69 @@ export default function Home() {
            </div>
         
         {/* Subject Performance and Student Risk (side-by-side on md+, stacked on small screens) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch justify-items-center">
           {/* Subject Performance Column */}
-          <div className="w-full max-w-full">
+          <div className="w-full max-w-full flex flex-col">
             <h4 className="font-medium mb-3 text-center md:text-left">Subject Performance</h4>
-            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full"
-                 style={{minHeight: '14rem'}}>
-                  <Bar data={{
-                    labels: ['Math', 'Science', 'History', 'English'],
-                    datasets: [{
-                      label: 'Average Score',
-                      data: PLACEHOLDER_DATA.avgScore,
-                      backgroundColor: 'rgba(59, 130, 246, 0.7)',
-                    }]
-                  }} />
-                 </div>
+            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full flex-1"
+                style={{minHeight: '14rem'}}>
+              <div className="h-full w-full">
+                <Bar data={{
+                  labels: ['Math', 'Science', 'History', 'English'],
+                  datasets: [{
+                    label: 'Average Score',
+                    data: PLACEHOLDER_DATA.avgScore,
+                    backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                  }]
+                }} options={{
+                  responsive: true,
+                  maintainAspectRatio: false, // This allows it to fill the container
+                  plugins: {
+                    legend: { display: false }
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      max: 100,
+                      grid: { color: 'rgba(0,0,0,0.1)' }
+                    }
+                  }
+                }} />
+              </div>
+            </div>
           </div>
           
           {/* Student Risk Distribution Column */}
-          <div className="w-full max-w-full">
+          <div className="w-full max-w-full flex flex-col">
             <h4 className="font-medium mb-3 text-center md:text-left">Student Risk Distribution</h4>
-            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full"
-                 style={{minHeight: '14rem', minWidth: '12rem'}}></div>
+            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full flex-1 flex items-center justify-center"
+                style={{minHeight: '14rem'}}>
+              <div className="h-full w-full flex items-center justify-center">
+                <div style={{ height: '100%', width: '100%', maxHeight: '300px', maxWidth: '300px' }}>
+                  <Pie data={{
+                    labels: ['Low Risk', 'Medium Risk', 'High Risk'],
+                    datasets: [{
+                      label: 'Risk Distribution',
+                      data: PLACEHOLDER_DATA.riskDistribution,
+                      backgroundColor: [
+                        'rgba(34, 197, 94, 0.7)',
+                        'rgba(253, 224, 71, 0.7)',
+                        'rgba(239, 68, 68, 0.7)'
+                      ],
+                    }]
+                  }} options={{
+                    responsive: true,
+                    maintainAspectRatio: true, // Keep this true to maintain circle shape
+                    plugins: {
+                      legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 12, font: { size: 10 } }
+                      }
+                    }
+                  }}/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

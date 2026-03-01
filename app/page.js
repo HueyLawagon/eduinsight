@@ -3,45 +3,57 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white p-8">
       {/* Dashboard Header */}
-      <h1 className="text-3xl font-bold mb-2">Dashboard</h1>
-      
-      {/* EduInsight Subheader */}
-      <h2 className="text-2xl font-semibold mb-6">EduInsight</h2>
+      <div className="flex justify-between w-full mb-6">
+        <h1 className="text-3xl font-bold">EduInsight</h1>
+        <div className="flex gap-4">
+          <h2 className="text-xl font-semibold">Dashboard</h2>
+          <h2 className="text-xl font-semibold">Reports</h2>
+        </div>
+      </div>
       
       {/* Performance Dashboard Section */}
       <div className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Performance Dashboard</h3>
         
-        {/* Stats Cards Row */}
-        <div className="flex gap-4 mb-8">
-          <div className="border border-gray-300 rounded-lg p-4 w-48 h-24 bg-white shadow-sm"></div>
-          <div className="border border-gray-300 rounded-lg p-4 w-48 h-24 bg-white shadow-sm"></div>
-          <div className="border border-gray-300 rounded-lg p-4 w-48 h-24 bg-white shadow-sm"></div>
-          <div className="border border-gray-300 rounded-lg p-4 w-48 h-24 bg-white shadow-sm"></div>
-        </div>
+           {/* Stats Cards Row (responsive: min-size preserved, cards can grow/shrink) */}
+           <div className="flex gap-4 mb-8 flex-wrap justify-center">
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
+            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
+            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
+            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
+            style={{minWidth: '12rem', minHeight: '6rem', flex: '1 1 12rem'}}></div>
+           </div>
         
-        {/* Subject Performance and Distributions Grid */}
-        <div className="grid grid-cols-3 gap-6">
+        {/* Subject Performance and Student Risk (side-by-side on md+, stacked on small screens) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start justify-items-center">
           {/* Subject Performance Column */}
-          <div>
-            <h4 className="font-medium mb-3">Subject Performance</h4>
-            <div className="border border-gray-300 rounded-lg p-3 h-57 bg-white shadow-sm"></div>
+          <div className="w-full max-w-full">
+            <h4 className="font-medium mb-3 text-center md:text-left">Subject Performance</h4>
+            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full"
+                 style={{minHeight: '14rem'}}></div>
           </div>
           
           {/* Student Risk Distribution Column */}
-          <div>
-            <h4 className="font-medium mb-3">Student Risk Distribution</h4>
-            <div className="border border-gray-300 rounded-lg p-3 h-57 bg-white shadow-sm"></div>
+          <div className="w-full max-w-full">
+            <h4 className="font-medium mb-3 text-center md:text-left">Student Risk Distribution</h4>
+            <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full"
+                 style={{minHeight: '14rem', minWidth: '12rem'}}></div>
           </div>
-          
-          {/* Grade Distribution Column */}
-          <div>
-            <h4 className="font-medium mb-3">Grade Distribution</h4>
+        </div>
+
+        {/* Grade Distribution as a single full-width card matching column heights */}
+        <div className="mt-6 w-full">
+          <h4 className="font-medium mb-3 text-left">Grade Distribution</h4>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full"
+               style={{minHeight: '14rem'}}>
             <div className="space-y-3">
-              <div className="border border-gray-300 rounded-lg p-3 h-12 bg-white shadow-sm"></div>
-              <div className="border border-gray-300 rounded-lg p-3 h-12 bg-white shadow-sm"></div>
-              <div className="border border-gray-300 rounded-lg p-3 h-12 bg-white shadow-sm"></div>
-              <div className="border border-gray-300 rounded-lg p-3 h-12 bg-white shadow-sm"></div>
+              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
+              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
+              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
+              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
             </div>
           </div>
         </div>

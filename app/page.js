@@ -9,7 +9,7 @@ const PLACEHOLDER_DATA = {
   avgAttendance: 91.5,
   atRiskStudents: 1,
   avgScore: [85, 78, 92, 88],
-  riskDistribution: [4, 1, 1]
+  riskDistribution: [4, 1, 1] // low risk, medium risk, high risk
 };
 
 export default function Home() {

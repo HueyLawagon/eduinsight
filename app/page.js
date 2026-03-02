@@ -4,13 +4,48 @@ import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar, Pie } from 'react-chartjs-2';
 
 const PLACEHOLDER_DATA = {
-  totalStudents: 6,
+  totalStudents: 7,
   classAverage: 82.3,
   avgAttendance: 91.5,
   atRiskStudents: 1,
   avgScore: [85, 78, 92, 88],
   riskDistribution: [4, 1, 1], // low risk, medium risk, high risk
-  gradeDistribution: [3, 1, 1, 1] // 90-100, 80-89, 70-79, below 70
+  gradeDistribution: [3, 2, 1, 1], // 90-100, 80-89, 70-79, below 70
+
+  students: [
+    {
+      name: 'Maria Santos',
+      risk: 'Low Risk',
+      grade: 88.5,
+      attendance: 95,
+      missing: 1,
+      predicted: 89.2
+    },
+    {
+      name: 'Juan Dela Cruz',
+      risk: 'High Risk',
+      grade: 72.5,
+      attendance: 78,
+      missing: 5,
+      predicted: 68.2
+    },
+    {
+      name: 'Ana Reyes',
+      risk: 'Medium Risk',
+      grade: 79.5,
+      attendance: 88,
+      missing: 3,
+      predicted: 78.2
+    },
+    {
+      name: 'Carlos Mendoza',
+      risk: 'Low Risk',
+      grade: 88.5,
+      attendance: 95,
+      missing: 1,
+      predicted: 89.2
+    }
+  ]
 };
 
 export default function Home() {
@@ -159,6 +194,57 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Student Overview */}
+        <div className="mt-6 w-full">
+          <h4 className="font-bold mb-3 text-center md:text-left">Student Overview</h4>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full">
+            <div className="space-y-4">
+              {/* Map through students - dynamically grows as students are added */}
+              {PLACEHOLDER_DATA.students.map((student, index) => (
+                <div key={index}>
+                  {/* Student Header with Name and Risk Badge */}
+                  <div className="flex justify-between items-center mb-2">
+                    <h5 className="font-semibold text-lg">{student.name}</h5>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      student.risk === 'Low Risk' ? 'bg-green-100 text-green-700' :
+                      student.risk === 'Medium Risk' ? 'bg-yellow-100 text-yellow-700' :
+                      'bg-red-100 text-red-700'
+                    }`}>
+                      {student.risk}
+                    </span>
+                  </div>
+                  
+                  {/* Student Stats Grid */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
+                    <div>
+                      <p className="text-xs text-gray-500">Grade</p>
+                      <p className="font-medium">{student.grade}%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500">Attendance</p>
+                      <p className="font-medium">{student.attendance}%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500">Missing</p>
+                      <p className="font-medium">{student.missing}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500">Predicted</p>
+                      <p className="font-medium">{student.predicted}%</p>
+                    </div>
+                  </div>
+                  
+                  {/* Divider - except after last student */}
+                  {index < PLACEHOLDER_DATA.students.length - 1 && (
+                    <hr className="border-gray-200 my-3" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );

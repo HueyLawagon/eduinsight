@@ -14,7 +14,7 @@ const PLACEHOLDER_DATA = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-screen bg-white pb-8 px-8">
       
       {/* Performance Dashboard Section */}
       <div className="mb-8">
@@ -63,7 +63,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch justify-items-center">
           {/* Subject Performance Column */}
           <div className="w-full max-w-full flex flex-col">
-            <h4 className="font-medium mb-3 text-center md:text-left">Subject Performance</h4>
+            <h4 className="font-bold mb-3 text-center md:text-left">Subject Performance</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full flex-1"
                 style={{minHeight: '14rem'}}>
               <div className="h-full w-full">
@@ -94,7 +94,7 @@ export default function Home() {
           
           {/* Student Risk Distribution Column */}
           <div className="w-full max-w-full flex flex-col">
-            <h4 className="font-medium mb-3 text-center md:text-left">Student Risk Distribution</h4>
+            <h4 className="font-bold mb-3 text-center md:text-left">Student Risk Distribution</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w-full flex-1 flex items-center justify-center"
                 style={{minHeight: '14rem'}}>
               <div className="h-full w-full flex items-center justify-center">
@@ -128,7 +128,7 @@ export default function Home() {
 
         {/* Grade Distribution as a single full-width card matching column heights */}
         <div className="mt-6 w-full">
-          <h4 className="font-medium mb-3 text-left">Grade Distribution</h4>
+          <h4 className="font-bold mb-3 text-left">Grade Distribution</h4>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full"
                style={{minHeight: '14rem'}}>
             <div className="space-y-3">

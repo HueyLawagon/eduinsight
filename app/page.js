@@ -10,7 +10,7 @@ const PLACEHOLDER_DATA = {
   atRiskStudents: 1,
   avgScore: [85, 78, 92, 88],
   riskDistribution: [4, 1, 1], // low risk, medium risk, high risk
-  gradeDistribution: [12, 8, 5, 3] // 90-100, 80-89, 70-79, below 70
+  gradeDistribution: [3, 1, 1, 1] // 90-100, 80-89, 70-79, below 70
 };
 
 export default function Home() {
@@ -141,8 +141,7 @@ export default function Home() {
                 { range: 'Below 70', count: PLACEHOLDER_DATA.gradeDistribution?.[3], color: 'bg-red-500' }
               ].map((item, index) => {
                 // Calculate percentage based on max count (adjust as needed)
-                const maxCount = 20; // You can calculate this dynamically
-                const percentage = Math.min((item.count / maxCount) * 100, 100);
+                const percentage = Math.min((item.count / PLACEHOLDER_DATA.totalStudents) * 100, 100);
                 
                 return (
                   <div key={index} className="flex items-center gap-3">

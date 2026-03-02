@@ -9,7 +9,8 @@ const PLACEHOLDER_DATA = {
   avgAttendance: 91.5,
   atRiskStudents: 1,
   avgScore: [85, 78, 92, 88],
-  riskDistribution: [4, 1, 1] // low risk, medium risk, high risk
+  riskDistribution: [4, 1, 1], // low risk, medium risk, high risk
+  gradeDistribution: [12, 8, 5, 3] // 90-100, 80-89, 70-79, below 70
 };
 
 export default function Home() {
@@ -130,12 +131,32 @@ export default function Home() {
         <div className="mt-6 w-full">
           <h4 className="font-bold mb-3 text-left">Grade Distribution</h4>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full"
-               style={{minHeight: '14rem'}}>
-            <div className="space-y-3">
-              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
-              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
-              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
-              <div className="w-full rounded-md bg-gray-50 p-3" style={{minHeight: '3rem'}}></div>
+              style={{minHeight: '14rem'}}>
+            <div className="space-y-4">
+              {/* Map through grade data */}
+              {[
+                { range: '90-100', count: PLACEHOLDER_DATA.gradeDistribution?.[0], color: 'bg-green-500' },
+                { range: '80-89', count: PLACEHOLDER_DATA.gradeDistribution?.[1], color: 'bg-blue-500' },
+                { range: '70-79', count: PLACEHOLDER_DATA.gradeDistribution?.[2], color: 'bg-yellow-500' },
+                { range: 'Below 70', count: PLACEHOLDER_DATA.gradeDistribution?.[3], color: 'bg-red-500' }
+              ].map((item, index) => {
+                // Calculate percentage based on max count (adjust as needed)
+                const maxCount = 20; // You can calculate this dynamically
+                const percentage = Math.min((item.count / maxCount) * 100, 100);
+                
+                return (
+                  <div key={index} className="flex items-center gap-3">
+                    <div className="w-16 text-sm font-medium">{item.range}</div>
+                    <div className="flex-1 h-8 bg-gray-100 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${item.color} rounded-full`} 
+                        style={{width: `${percentage}%`}}
+                      ></div>
+                    </div>
+                    <div className="w-12 text-sm text-right">{item.count}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ export const PLACEHOLDER_DATA = {
   totalStudents: 6,
   classAverage: 82.3,
   avgAttendance: 91.5,
-  atRiskStudents: 1,
   avgScore: [85, 78, 92, 88],
   riskDistribution: [4, 1, 1], // low risk, medium risk, high risk
   gradeDistribution: [3, 2, 1, 1], // 90-100, 80-89, 70-79, below 70

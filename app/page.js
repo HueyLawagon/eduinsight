@@ -2,7 +2,7 @@
 
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar, Pie } from 'react-chartjs-2';
-import { PLACEHOLDER_DATA } from './mockData/data';
+import { PLACEHOLDER_DATA } from './Data/data';
 
 export default function Home() {
   return (
@@ -46,7 +46,7 @@ export default function Home() {
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
                 <div className="mb-2 font-bold">At-Risk Students</div>
-                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.atRiskStudents}</div>
+                <div className="text-4xl font-bold text-gray-800">{PLACEHOLDER_DATA.riskDistribution[2]}</div>
               </div>
             </div>
            </div>

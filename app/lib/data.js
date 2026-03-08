@@ -97,7 +97,6 @@ export async function getDashboardData() {
     grade: r.grade,
     attendance: r.attendance,
     missing: r.missing,
-    predicted: r.predicted,
     // include subjects if needed
     math: r.math,
     science: r.science,

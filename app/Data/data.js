@@ -13,7 +13,6 @@ export const PLACEHOLDER_DATA = {
       grade: 88.5,
       attendance: 95,
       missing: 1,
-      predicted: 89.2
     },
     {
       name: 'Juan Dela Cruz',
@@ -21,7 +20,6 @@ export const PLACEHOLDER_DATA = {
       grade: 72.5,
       attendance: 78,
       missing: 5,
-      predicted: 68.2
     },
     {
       name: 'Ana Reyes',
@@ -29,7 +27,6 @@ export const PLACEHOLDER_DATA = {
       grade: 79.5,
       attendance: 88,
       missing: 3,
-      predicted: 78.2
     },
     {
       name: 'Carlos Mendoza',
@@ -37,7 +34,6 @@ export const PLACEHOLDER_DATA = {
       grade: 88.5,
       attendance: 95,
       missing: 1,
-      predicted: 89.2
     },
   ]
 };

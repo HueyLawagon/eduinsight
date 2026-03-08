@@ -155,7 +155,7 @@ export default function DashboardClient({ data }) {
                       {student.risk}
                     </span>
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-3">
                     <div>
                       <p className="text-xs text-gray-500">Grade</p>
                       <p className="font-medium">{student.grade}%</p>
@@ -167,10 +167,6 @@ export default function DashboardClient({ data }) {
                     <div>
                       <p className="text-xs text-gray-500">Missing</p>
                       <p className="font-medium">{student.missing}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500">Predicted</p>
-                      <p className="font-medium">{student.predicted}%</p>
                     </div>
                   </div>
                   {index < data.students.length - 1 && (

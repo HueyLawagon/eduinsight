@@ -1,5 +1,5 @@
-﻿name,risk,grade,attendance,missing,predicted,math,science,history,english
-Maria Santos,Low Risk,90.5,95,1,89.2,90,85,88,91
-Juan Dela Cruz,High Risk,72.5,78,5,68.2,70,75,68,77
-Ana Reyes,Medium Risk,79.5,88,3,78.2,80,82,75,81
-Carlos Mendoza,Low Risk,88.5,95,1,89.2,89,87,90,88
+﻿name,risk,grade,attendance,missing,math,science,history,english
+Maria Santos,Low Risk,90.5,95,1,90,85,88,91
+Juan Dela Cruz,High Risk,72.5,78,5,70,75,68,77
+Ana Reyes,Medium Risk,79.5,88,3,80,82,75,81
+Carlos Mendoza,Low Risk,88.5,95,1,89,87,90,88

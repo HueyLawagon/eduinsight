@@ -1,5 +1,8 @@
-﻿name,risk,grade,attendance,missing,math,science,history,english
-Maria Santos,Low Risk,90.5,95,1,90,85,88,91
-Juan Dela Cruz,High Risk,72.5,78,5,70,75,68,77
-Ana Reyes,Medium Risk,79.5,88,3,80,82,75,81
-Carlos Mendoza,Low Risk,88.5,95,1,89,87,90,88
+﻿name,attendance,missing,math,science,history,english
+Maria Santos,95,1,89,94,95,97
+Juan Dela Cruz,78,5,70,75,68,77
+Ana Reyes,88,3,80,85,75,89
+Carlos Mendoza,95,1,83,87,90,88
+Azura Costales,85,2,82,94,88,95
+Epsilon Lee,89,1,80,84,90,92
+Lumine Aether,80,4,89,90,94,94

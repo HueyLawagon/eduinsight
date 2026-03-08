@@ -27,7 +27,7 @@ export default function ReportsClient({ data }) {
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h/full">
                 <div className="mb-2 font-bold">Low Risk Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.riskDistribution[1]}</div>
+                <div className="text-4xl font-bold text-gray-800">{data.riskDistribution[0]}</div>
               </div>
             </div>
 

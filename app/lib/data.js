@@ -18,11 +18,38 @@ function parseCsv(csvString) {
   });
 }
 
+function computeRisk(grade) {
+  if (grade >= 80) return 'Low Risk';
+  if (grade >= 70) return 'Medium Risk';
+  return 'High Risk';
+}
+
+function computeGrade(row) {
+  const subjects = ['math', 'science', 'history', 'english'];
+  const subjectAvg = subjects.reduce((sum, subj) => sum + (row[subj] || 0), 0) / subjects.length;
+  
+  let penalty = 0;
+  
+  // Attendance penalty
+  if (row.attendance < 80) penalty += 10;
+  else if (row.attendance < 90) penalty += 5;
+  
+  // Missing assignments penalty (2 points per missing)
+  penalty += (row.missing || 0) * 2;
+  
+  // Ensure grade doesn't go below 0
+  const finalGrade = Math.max(0, subjectAvg - penalty);
+  
+  return finalGrade;
+}
+
 function computeMetrics(rows) {
   const totalStudents = rows.length;
+  // Compute grades for each student
+  const studentGrades = rows.map(r => computeGrade(r));
   const classAverage =
     totalStudents > 0
-      ? rows.reduce((sum, r) => sum + (r.grade || 0), 0) / totalStudents
+      ? studentGrades.reduce((sum, g) => sum + g, 0) / totalStudents
       : 0;
   const avgAttendance =
     totalStudents > 0
@@ -38,19 +65,16 @@ function computeMetrics(rows) {
 
   // risk distribution: low, medium, high
   const riskDistribution = [0, 0, 0];
-  rows.forEach(r => {
-    if (typeof r.risk === 'string') {
-      const lower = r.risk.toLowerCase();
-      if (lower.includes('low')) riskDistribution[0]++;
-      else if (lower.includes('medium')) riskDistribution[1]++;
-      else if (lower.includes('high')) riskDistribution[2]++;
-    }
+  studentGrades.forEach(grade => {
+    const risk = computeRisk(grade);
+    if (risk === 'Low Risk') riskDistribution[0]++;
+    else if (risk === 'Medium Risk') riskDistribution[1]++;
+    else if (risk === 'High Risk') riskDistribution[2]++;
   });
 
   // grade distribution ranges
   const gradeDistribution = [0, 0, 0, 0];
-  rows.forEach(r => {
-    const g = r.grade;
+  studentGrades.forEach(g => {
     if (g >= 90) gradeDistribution[0]++;
     else if (g >= 80) gradeDistribution[1]++;
     else if (g >= 70) gradeDistribution[2]++;
@@ -93,8 +117,8 @@ export async function getDashboardData() {
   // map rows into student objects that match earlier placeholder format
   const students = rows.map(r => ({
     name: r.name,
-    risk: r.risk,
-    grade: r.grade,
+    risk: computeRisk(computeGrade(r)),
+    grade: parseFloat(computeGrade(r).toFixed(1)),
     attendance: r.attendance,
     missing: r.missing,
     // include subjects if needed

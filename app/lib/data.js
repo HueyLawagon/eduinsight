@@ -4,7 +4,7 @@ import path from 'path';
 // Simple CSV parser assuming no quoted commas and a header row.
 function parseCsv(csvString) {
   const lines = csvString.trim().split('\n');
-  const headers = lines.shift().split(',');
+  const headers = lines.shift().split(',').map(h => h.trim());
   return lines.map(line => {
     const values = line.split(',');
     const obj = {};

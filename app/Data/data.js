@@ -10,7 +10,7 @@ export const PLACEHOLDER_DATA = {
     {
       name: 'Maria Santos',
       risk: 'Low Risk',
-      grade: 90.5,
+      grade: 88.5,
       attendance: 95,
       missing: 1,
       predicted: 89.2

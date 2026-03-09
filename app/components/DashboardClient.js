@@ -6,7 +6,7 @@ import { Bar, Pie } from 'react-chartjs-2';
 export default function DashboardClient({ data }) {
   // data should contain the same shape that PLACEHOLDER_DATA used to have
   return (
-    <div className="min-h-screen bg-white pb-8 px-8">
+    <div className="min-h-screen bg-white pb-8 px-4 sm:px-8">
       {/* Performance Dashboard Section */}
       <div className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Performance Dashboard</h3>
@@ -17,8 +17,8 @@ export default function DashboardClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">Total Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.totalStudents}</div>
+                <div className="mb-2 font-bold text-sm sm:text-base">Total Students</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-800">{data.totalStudents}</div>
               </div>
             </div>
 
@@ -26,8 +26,8 @@ export default function DashboardClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">Class Average</div>
-                <div className="text-4xl font-bold text-gray-800">{data.classAverage}%</div>
+                <div className="mb-2 font-bold text-sm sm:text-base">Class Average</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-800">{data.classAverage}%</div>
               </div>
             </div>
 
@@ -35,8 +35,8 @@ export default function DashboardClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">Average Attendance</div>
-                <div className="text-4xl font-bold text-gray-800">{data.avgAttendance}%</div>
+                <div className="mb-2 font-bold text-sm sm:text-base">Average Attendance</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-800">{data.avgAttendance}%</div>
               </div>
             </div>
 
@@ -44,8 +44,8 @@ export default function DashboardClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold text-red-600">At-Risk Students</div>
-                <div className="text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
+                <div className="mb-2 font-bold text-sm sm:text-base text-red-600">At-Risk Students</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
               </div>
             </div>
          </div>

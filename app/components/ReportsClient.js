@@ -108,7 +108,7 @@ export default function ReportsClient({ data }) {
   };
 
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-screen bg-white p-4 sm:p-8">
       {/* Performance Dashboard Section */}
       <div className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Reports</h3>
@@ -117,8 +117,8 @@ export default function ReportsClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">Total Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.totalStudents}</div>
+                <div className="mb-2 font-bold text-sm sm:text-base">Total Students</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-800">{data.totalStudents}</div>
               </div>
             </div>
 
@@ -126,8 +126,8 @@ export default function ReportsClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">Class Average</div>
-                <div className="text-4xl font-bold text-gray-800">{data.classAverage}%</div>
+                <div className="mb-2 font-bold text-sm sm:text-base">Class Average</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-800">{data.classAverage}%</div>
               </div>
             </div>
 
@@ -135,8 +135,8 @@ export default function ReportsClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold text-green-600">Low Risk Students</div>
-                <div className="text-4xl font-bold text-green-600">{data.riskDistribution[0]}</div>
+                <div className="mb-2 font-bold text-sm sm:text-base text-green-600">Low Risk Students</div>
+                <div className="text-3xl sm:text-4xl font-bold text-green-600">{data.riskDistribution[0]}</div>
               </div>
             </div>
 
@@ -144,8 +144,8 @@ export default function ReportsClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold text-red-600">At-Risk Students</div>
-                <div className="text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
+                <div className="mb-2 font-bold text-sm sm:text-base text-red-600">At-Risk Students</div>
+                <div className="text-3xl sm:text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
               </div>
             </div>
          </div>
@@ -203,13 +203,13 @@ export default function ReportsClient({ data }) {
               </div>
 
               {/* Export as PDF Button Section */}
-              <div className="flex justify-between items-center pt-2">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-2 gap-4 sm:gap-0">
                 <p className="text-xs text-gray-500">
                   ✓ Report will include {filteredStudents?.length || 0} student(s) with selected filters
                 </p>
                 <button 
                   onClick={handleExportPDF}
-                  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-2 px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2">
+                  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-2 px-4 sm:px-8 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 w-full sm:w-auto justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
@@ -223,47 +223,49 @@ export default function ReportsClient({ data }) {
         {/* Student Data */}
         <div className="mt-6 w-full">
           <h4 className="font-bold mb-3 text-center md:text-left">Student Data</h4>
-          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead>
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Math</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Science</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">History</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">English</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attendance</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Missing</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {filteredStudents && filteredStudents.map((stu, idx) => {
-                  // determine color based on risk level (case-insensitive)
-                  const riskValue = (stu.risk || '').toString().toUpperCase().split(' ')[0];
-                  const riskClass = riskValue === 'LOW' ? 'bg-green-100 text-green-800' :
-                                     riskValue === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
-                                     'bg-red-100 text-red-800';
-                  const level = (stu.risk || '').toString().toUpperCase();
-                  return (
-                    <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : ''}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{stu.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.grade}%</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.math}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.science}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.history}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.english}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.attendance}%</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.missing}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${riskClass}`}>{level}</span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div className="border border-gray-300 rounded-lg bg-white shadow-sm w-full overflow-x-auto">
+            <div className="p-2 sm:p-4">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead>
+                  <tr>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Math</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Science</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">History</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">English</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attendance</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Missing</th>
+                    <th className="px-2 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk</th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {filteredStudents && filteredStudents.map((stu, idx) => {
+                    // determine color based on risk level (case-insensitive)
+                    const riskValue = (stu.risk || '').toString().toUpperCase().split(' ')[0];
+                    const riskClass = riskValue === 'LOW' ? 'bg-green-100 text-green-800' :
+                                       riskValue === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
+                                       'bg-red-100 text-red-800';
+                    const level = (stu.risk || '').toString().toUpperCase();
+                    return (
+                      <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : ''}>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-medium text-gray-900">{stu.name}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.grade}%</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.math}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.science}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.history}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.english}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.attendance}%</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-700">{stu.missing}</td>
+                        <td className="px-2 sm:px-6 py-4 whitespace-nowrap">
+                          <span className={`px-1 sm:px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${riskClass}`}>{level}</span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

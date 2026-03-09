@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex justify-between w-full bg-gray-800 text-white mb-6 pt-8 pr-8 pl-8 pb-4">
-                <h1 className="text-3xl font-bold">EduInsight</h1>
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center w-full bg-gray-800 text-white mb-6 pt-8 pr-4 sm:pr-8 pl-4 sm:pl-8 pb-4 gap-4 sm:gap-0">
+                <h1 className="text-2xl sm:text-3xl font-bold">EduInsight</h1>
                 <div className="flex gap-4">
-                  <Link href="/"><h2 className="text-xl font-semibold underline">Dashboard</h2></Link>
-                  <Link href="/Reports/"><h2 className="text-xl font-semibold underline">Reports</h2></Link>
+                  <Link href="/"><h2 className="text-lg sm:text-xl font-semibold underline">Dashboard</h2></Link>
+                  <Link href="/Reports/"><h2 className="text-lg sm:text-xl font-semibold underline">Reports</h2></Link>
                 </div>
               </div>
         {children}

@@ -106,6 +106,10 @@ export default function ReportsClient({ data }) {
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Math</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Science</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">History</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">English</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attendance</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Missing</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk</th>
@@ -123,6 +127,10 @@ export default function ReportsClient({ data }) {
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : ''}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{stu.name}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.grade}%</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.math}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.science}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.history}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.english}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.attendance}%</td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.missing}</td>
                       <td className="px-6 py-4 whitespace-nowrap">

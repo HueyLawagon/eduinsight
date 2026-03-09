@@ -44,14 +44,14 @@ export default function DashboardClient({ data }) {
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
-                <div className="mb-2 font-bold">At-Risk Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.riskDistribution[2]}</div>
+                <div className="mb-2 font-bold text-red-600">At-Risk Students</div>
+                <div className="text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
               </div>
             </div>
          </div>
-
+         
+        {/* Subject Performance Chart */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch justify-items-center">
-          {/* Subject Performance Chart */}
           <div className="w-full max-w-full flex flex-col">
             <h4 className="font-bold mb-3 text-center md:text-left">Subject Performance</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w/full flex-1"
@@ -124,7 +124,7 @@ export default function DashboardClient({ data }) {
             <div className="space-y-4">
               {[
                 { range: '90-100', count: data.gradeDistribution?.[0], color: 'bg-green-500' },
-                { range: '80-89', count: data.gradeDistribution?.[1], color: 'bg-blue-500' },
+                { range: '80-89', count: data.gradeDistribution?.[1], color: 'bg-green-600' },
                 { range: '70-79', count: data.gradeDistribution?.[2], color: 'bg-yellow-500' },
                 { range: 'Below 70', count: data.gradeDistribution?.[3], color: 'bg-red-500' }
               ].map((item, index) => {

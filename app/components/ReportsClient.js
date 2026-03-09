@@ -1,15 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 export default function ReportsClient({ data }) {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
   const [selectedRisks, setSelectedRisks] = useState({
     low: true,
     medium: true,
@@ -36,11 +31,6 @@ export default function ReportsClient({ data }) {
   });
 
   const handleExportPDF = () => {
-    if (!isClient) {
-      alert('Please wait for the page to load.');
-      return;
-    }
-
     if (!filteredStudents || filteredStudents.length === 0) {
       alert('No students to export. Please select at least one risk level.');
       return;
@@ -78,7 +68,7 @@ export default function ReportsClient({ data }) {
       });
 
       // Generate table
-      pdf.autoTable({
+      autoTable(pdf, {
         head: [['Name', 'Grade', 'Math', 'Science', 'History', 'English', 'Attendance', 'Missing', 'Risk']],
         body: tableData,
         startY: 30,

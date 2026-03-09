@@ -99,7 +99,7 @@ export default function ReportsClient({ data }) {
 
         {/* Student Data */}
         <div className="mt-6 w-full">
-          <h4 className="font-bold mb-3 text-center md:text-left">Student Overview</h4>
+          <h4 className="font-bold mb-3 text-center md:text-left">Student Data</h4>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead>
@@ -114,10 +114,11 @@ export default function ReportsClient({ data }) {
               <tbody className="bg-white divide-y divide-gray-200">
                 {data.students && data.students.map((stu, idx) => {
                   // determine color based on risk level (case-insensitive)
-                  const level = (stu.risk || '').toString().toUpperCase();
-                  const riskClass = level === 'LOW' ? 'bg-green-100 text-green-800' :
-                                     level === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
+                  const riskValue = (stu.risk || '').toString().toUpperCase().split(' ')[0];
+                  const riskClass = riskValue === 'LOW' ? 'bg-green-100 text-green-800' :
+                                     riskValue === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
                                      'bg-red-100 text-red-800';
+                  const level = (stu.risk || '').toString().toUpperCase();
                   return (
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : ''}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{stu.name}</td>

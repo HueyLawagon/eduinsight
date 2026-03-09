@@ -1,6 +1,7 @@
-import { PLACEHOLDER_DATA } from '../Data/data';
+import { getDashboardData } from '../lib/data';
 import ReportsClient from '../components/ReportsClient';
 
-export default function Home() {
-  return <ReportsClient data={PLACEHOLDER_DATA} />;
+export default async function Home() {
+  const data = await getDashboardData();
+  return <ReportsClient data={data} />;
 }

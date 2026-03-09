@@ -7,6 +7,7 @@ export default function ReportsClient({ data }) {
       <div className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Reports</h3>
         <div className="flex gap-4 mb-8 flex-wrap justify-center">
+          {/* Total Students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
@@ -15,35 +16,40 @@ export default function ReportsClient({ data }) {
               </div>
             </div>
 
+          {/* Class Average */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
-              <div className="flex flex-col justify-between h/full">
+              <div className="flex flex-col justify-between h-full">
                 <div className="mb-2 font-bold">Class Average</div>
                 <div className="text-4xl font-bold text-gray-800">{data.classAverage}%</div>
               </div>
             </div>
 
+          {/* Low Risk Students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
-              <div className="flex flex-col justify-between h/full">
-                <div className="mb-2 font-bold">Low Risk Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.riskDistribution[0]}</div>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2 font-bold text-green-600">Low Risk Students</div>
+                <div className="text-4xl font-bold text-green-600">{data.riskDistribution[0]}</div>
               </div>
             </div>
 
+          {/* At-Risk Students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
-              <div className="flex flex-col justify-between h/full">
-                <div className="mb-2 font-bold">At-Risk Students</div>
-                <div className="text-4xl font-bold text-gray-800">{data.riskDistribution[2]}</div>
+              <div className="flex flex-col justify-between h-full">
+                <div className="mb-2 font-bold text-red-600">At-Risk Students</div>
+                <div className="text-4xl font-bold text-red-600">{data.riskDistribution[2]}</div>
               </div>
             </div>
          </div>
 
+          {/* Report Configuration Section */}
         <div className="mt-8 w-full">
           <h4 className="font-bold text-lg mb-4 text-left text-gray-900">Report Configuration</h4>
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 shadow-md w-full">
             <div className="space-y-6">
+              {/* Filter by Risk Level Section */}
               <div className="bg-white rounded-lg p-4 border border-blue-100">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -75,6 +81,7 @@ export default function ReportsClient({ data }) {
                 </div>
               </div>
 
+              {/* Export as PDF Button Section */}
               <div className="flex justify-between items-center pt-2">
                 <p className="text-xs text-gray-500">
                   ✓ Report will include all selected filters
@@ -87,6 +94,44 @@ export default function ReportsClient({ data }) {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Student Data */}
+        <div className="mt-6 w-full">
+          <h4 className="font-bold mb-3 text-center md:text-left">Student Overview</h4>
+          <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w-full overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead>
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attendance</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Missing</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Risk</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {data.students && data.students.map((stu, idx) => {
+                  // determine color based on risk level (case-insensitive)
+                  const level = (stu.risk || '').toString().toUpperCase();
+                  const riskClass = level === 'LOW' ? 'bg-green-100 text-green-800' :
+                                     level === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
+                                     'bg-red-100 text-red-800';
+                  return (
+                    <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : ''}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{stu.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.grade}%</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.attendance}%</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{stu.missing}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${riskClass}`}>{level}</span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

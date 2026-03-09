@@ -13,6 +13,7 @@ export default function DashboardClient({ data }) {
 
         {/* Stats Cards Row (responsive: min-size preserved, cards can grow/shrink) */}
         <div className="flex gap-4 mb-8 flex-wrap justify-center">
+          {/* Total Students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
@@ -21,6 +22,7 @@ export default function DashboardClient({ data }) {
               </div>
             </div>
 
+          {/* Class Average */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
@@ -29,6 +31,7 @@ export default function DashboardClient({ data }) {
               </div>
             </div>
 
+          {/* Average Attendance */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
@@ -37,6 +40,7 @@ export default function DashboardClient({ data }) {
               </div>
             </div>
 
+          {/* At-Risk Students */}
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm flex-shrink-0"
             style={{minWidth: '12rem', minHeight: '12rem', flex: '1 1 12rem'}}>
               <div className="flex flex-col justify-between h-full">
@@ -47,6 +51,7 @@ export default function DashboardClient({ data }) {
          </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch justify-items-center">
+          {/* Subject Performance Chart */}
           <div className="w-full max-w-full flex flex-col">
             <h4 className="font-bold mb-3 text-center md:text-left">Subject Performance</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w/full flex-1"
@@ -77,6 +82,7 @@ export default function DashboardClient({ data }) {
             </div>
           </div>
 
+          {/* Student Risk Distribution Chart */}
           <div className="w-full max-w-full flex flex-col">
             <h4 className="font-bold mb-3 text-center md:text-left">Student Risk Distribution</h4>
             <div className="border border-gray-300 rounded-lg p-3 bg-white shadow-sm w/full flex-1 flex items-center justify-center"
@@ -110,6 +116,7 @@ export default function DashboardClient({ data }) {
           </div>
         </div>
 
+        {/* Grade Distribution */}
         <div className="mt-6 w-full">
           <h4 className="font-bold mb-3 text-left">Grade Distribution</h4>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w/full"
@@ -139,6 +146,7 @@ export default function DashboardClient({ data }) {
           </div>
         </div>
 
+        {/* Student Overview */}
         <div className="mt-6 w/full">
           <h4 className="font-bold mb-3 text-center md:text-left">Student Overview</h4>
           <div className="border border-gray-300 rounded-lg p-4 bg-white shadow-sm w/full">
